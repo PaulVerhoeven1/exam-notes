@@ -1,0 +1,11 @@
+---
+- name: setting groups and users
+  hosts: nodes
+  vars_files:
+    vars/password.yml
+  tasks:
+    - name: set users 
+      user:
+        name: james
+        shell: /bin/bash
+        password: "{{ newpassword|password_hash('sha512') }}"

@@ -1,0 +1,13 @@
+---
+- name: setting up firewall
+  hosts: nodes
+  remote_user: root
+  tasks:
+    - name: enable firewalld
+      command: systemctl enable --now firewalld
+    - firewalld:
+        port: 443/tcp
+        permanent: true
+        state: enabled
+    - name: reload firewalld
+      command: firewall-cmd --reload

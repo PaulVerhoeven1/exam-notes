@@ -1,0 +1,8 @@
+---
+- name: archiving bla bla
+  hosts: nodes
+  tasks:
+    - name: archiving
+      archive:
+        path: /home
+        dest: /tmp/lol.tar

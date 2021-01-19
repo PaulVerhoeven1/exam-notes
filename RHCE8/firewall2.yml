@@ -1,0 +1,22 @@
+---
+- name: adding firewall rules
+  hosts: nodes
+  vars:
+    test:
+      - port: 22/tcp
+      - port: 80/tcp
+      - port: 443/tcp
+
+  tasks:
+    - name: appending firewall rules
+      firewalld:
+        port: "{{ item.port }}"
+        permanent: true
+        state: enabled
+      loop: "{{ test }}"
+      register: firewall
+    - name: reload firewall
+      systemd:
+        state: reloaded
+        name: firewalld
+      when: firewall.changed

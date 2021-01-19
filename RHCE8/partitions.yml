@@ -1,0 +1,10 @@
+---
+- name: configure partitions
+  hosts: nodes
+  remote_user: root
+  tasks:
+    - name: setup partitions
+      lvol:
+        vg: vg_test
+        lv: lv_test
+        size: 1g

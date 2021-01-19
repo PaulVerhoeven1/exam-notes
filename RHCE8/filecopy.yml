@@ -1,0 +1,11 @@
+---
+- name: copy files to the machines
+  hosts: nodes
+  remote_user: root
+  vars_files:
+    - vars/main.yml
+  tasks:
+    - name: copy a file
+      copy:
+        src: '{{ file }}'
+        dest: /tmp/{{ file }}
