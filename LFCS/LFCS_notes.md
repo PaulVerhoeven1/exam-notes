@@ -80,3 +80,15 @@
 
 
 
+
+
+| **RAID**                                                     |                                          |
+| ------------------------------------------------------------ | ---------------------------------------- |
+| Yum install mdadm -y                                         | Install mdadm                            |
+| mdadm --create --verbose /dev/md0 --level=raid5 --raid-devices=3 /dev/sdb /dev/sdc /dev/sdd | Create a raid setup with 3 devices.      |
+| cat /proc/mdstat                                             | show the status of the raid device       |
+| mdadm --detail /dev/md0                                      | show info about the raid setup           |
+| Mkfs.xfs /dev/md0                                            | create a filesystem                      |
+| Mount /dev/md0 /mnt/raid                                     | mounting the filsystesystem to /mnt/raid |
+| mdadm --detail --scan > /etc/mdadm.conf                      | Show RAID config and export the config   |
+                                                           
