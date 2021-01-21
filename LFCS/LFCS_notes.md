@@ -45,7 +45,7 @@
 **List all the options for the kill command**
 
 - Kill -l 
-- ![image-20210121133734244](/Users/sue/Documents/Git_Projects/exam-notes/LFCS/images/LFCS_notes/image-20210121133734244.png)
+- ![image-20210121133734244](./images/LFCS_notes/image-20210121133734244.png)
 
 **Kill a process**
 
