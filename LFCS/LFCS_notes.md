@@ -1,10 +1,10 @@
 **Force after first login changing a password**
 
-- passwd --expire <<username>>
+- passwd --expire <'username'>
 
 **Show info about password expiration for a user**
 
--  chage -l <<username>>
+-  chage -l <'username'>
 
 **Grep commands**
 
