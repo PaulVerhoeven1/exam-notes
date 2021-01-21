@@ -40,9 +40,9 @@
 
 - lsof -u linda 
 
-**RAID config:**
+**Show RAID config and export the config**
 
-- mdadm --detail —scan
+- mdadm --detail —scan >> /etc/mdadm.conf
 
 **Virsh auto-start machine:**
 
