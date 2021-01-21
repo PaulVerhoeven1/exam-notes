@@ -22,8 +22,6 @@
 
 ---------
 
-
-
 **Find all files that are not owned by a user**
 
 - find $PWD -name 'name[0-9][0-9]' \! -user student \! -group student
@@ -40,10 +38,22 @@
 
 - lsof -u linda 
 
+**List all the open process on your system**
+
+- ps -elf
+
+**List all the options for the kill command**
+
+- Kill -l 
+- ![image-20210121133734244](/Users/sue/Documents/Git_Projects/exam-notes/LFCS/images/LFCS_notes/image-20210121133734244.png)
+
+**Kill a process**
+
+- kill -9 <'PID'>
 
 **Virsh auto-start machine:**
 
-- virsh autostart <domainname> 
+- virsh autostart <'domainname'> 
 
 **Add setgid bit to a file**
 
@@ -74,7 +84,6 @@
 - 2 >> = standard error 
 
 - & >> standard output + standard error
-
 
 
 | **RAID**                                                     |                                          |
