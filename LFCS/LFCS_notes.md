@@ -40,9 +40,6 @@
 
 - lsof -u linda 
 
-**Show RAID config and export the config**
-
-- mdadm --detail —scan >> /etc/mdadm.conf
 
 **Virsh auto-start machine:**
 
@@ -77,8 +74,6 @@
 - 2 >> = standard error 
 
 - & >> standard output + standard error
-
-
 
 
 
