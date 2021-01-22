@@ -24,7 +24,7 @@
 
 **Find all files that are not owned by a user**
 
-- find $PWD -name 'name[0-9][0-9]' \\! -user student \\! -group student
+- find $PWD -name 'name\[0-9\]\[0-9\]' \\! -user student \\! -group student
 
 **Find all open ports**
 
@@ -57,7 +57,7 @@
 
 **Kill a process**
 
-- kill -9 <'PID'>
+- kill -9 \<PID\>
 
 **Virsh auto-start machine**
 
@@ -67,7 +67,7 @@
 
 - chmod g+s 
 
-**Add setups bit to a file**
+**Add setgroupid  bit to a file**
 
 - chmod u+s 
 
