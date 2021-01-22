@@ -1,10 +1,10 @@
 **Force after first login changing a password**
 
-- passwd --expire <'username'>
+- passwd --expire \<username\>
 
 **Show info about password expiration for a user**
 
--  chage -l <'username'>
+-  chage -l \<username\>
 
 **Grep commands**
 
@@ -24,7 +24,7 @@
 
 **Find all files that are not owned by a user**
 
-- find $PWD -name 'name[0-9][0-9]' \! -user student \! -group student
+- find $PWD -name 'name[0-9][0-9]' \\! -user student \\! -group student
 
 **Find all open ports**
 
@@ -42,6 +42,10 @@
 
 - ps -elf
 
+**Show all process and the top process**
+
+- Ps -aux --forest
+
 **List all the options for the kill command**
 
 - Kill -l 
@@ -53,7 +57,7 @@
 
 **Virsh auto-start machine:**
 
-- virsh autostart <'domainname'> 
+- virsh autostart \<domainname\> 
 
 **Add setgid bit to a file**
 
@@ -95,4 +99,22 @@
 | Mkfs.xfs /dev/md0                                            | create a filesystem                      |
 | Mount /dev/md0 /mnt/raid                                     | mounting the filsystesystem to /mnt/raid |
 | mdadm --detail --scan > /etc/mdadm.conf                      | Show RAID config and export the config   |
+
+-----
+
+**Quota**
+
+- vi /etc/fstab
+- ![image-20210122103300628](images/LFCS_notes/image-20210122103300628.png)
+
+**enable quota**
+
+- quotacheck -vug /dev/mapper/vg_disk-lv_disk
+- quotaon 
+
+**Edit quota of an user**
+
+- edquota -u \<username\> 
+- quotacheck -a 
+- quotaon -a 
 
