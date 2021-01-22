@@ -38,6 +38,10 @@
 
 - lsof -u linda 
 
+**Find all open files by a program**
+
+- lsof -c httpd
+
 **List all the open process on your system**
 
 - ps -elf
@@ -55,7 +59,7 @@
 
 - kill -9 <'PID'>
 
-**Virsh auto-start machine:**
+**Virsh auto-start machine**
 
 - virsh autostart \<domainname\> 
 
