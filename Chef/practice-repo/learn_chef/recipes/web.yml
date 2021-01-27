@@ -1,0 +1,11 @@
+resources:
+ - type: "package"
+   name: "apache2"
+ - type: "file"
+   name: "/var/www/html/index.html"
+   content: "this is a testfile"
+ - type: "service"
+   name: "apache2"
+   action:
+    - enable
+    - start

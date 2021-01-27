@@ -16,22 +16,16 @@
 
 - Kubectl get all —selector app=nginx
 
-
-
 **StatefulSets:**
 
 - Are using ordering and uniqueness of the name of the pod
 - Always a service including with a stateful set
 - Storage will not be deleted when statefulset get deleted
 
-
-
 **DaemonSet:**
 
 - ensuring that a pod is running on all the nodes
 - Great for services that are running everywhere (monitoring daemons, log collectors etc)
-
-
 
 **ConfigMap (create):**
 
@@ -40,11 +34,9 @@
 - Kubectl describe cm test
 - kubectl create cm test —from-file=test2.yaml
 
-
-
 **Secret (create):**
 
--  kubectl create secret generic secret1 --from-literal=username=jan --from-literal=password=wachtwoord -o yaml --dry-run > secret.yaml’
+- Kubectl create secret generic secret1 --from-literal=username=jan --from-literal=password=wachtwoord -o yaml --dry-run > secret.yaml’
 - kubectl create secret generic secret1 —from-file=secret.yaml
 - Kubectl get secret secret1
 - Kubectl describe secret secret1
@@ -60,16 +52,14 @@ PVC (Persistant Volume Claim) -> Persistant Volume
 - ReadWriteMany -- the volume can be mounted as read-write by many nodes
 
 
-
 **Networking Kubernetes:**
 
-Services: needed for static ip address to reach the right pod. You need to have a label on the pod or on the deployment!
+- Services: needed for static ip address to reach the right pod. You need to have a label on the pod or on the deployment!
 
-Nodeport: The service is exposed at each node’s IP address a static op address. The service can be reached from outside the cluster at nodeip:nodeport
+- Nodeport: The service is exposed at each node’s IP address a static op address. The service can be reached from outside the cluster at nodeip:nodeport
 
-ClusterIP: The service is internally exposed and is reachable only from within the cluster
+- ClusterIP: The service is internally exposed and is reachable only from within the cluster
 
-Ingress -> Service -> Deployments / Pods 
+- Ingress -> Service -> Deployments / Pods 
 
-Ingress: mapping path to service port 
-
+- Ingress: mapping path to service port 
