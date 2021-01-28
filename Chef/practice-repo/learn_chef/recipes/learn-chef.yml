@@ -1,4 +1,0 @@
-resources:
- - type: "file"
-   name: "/etc/motd"
-   content: "Learning Chef is fun with YAML!"
