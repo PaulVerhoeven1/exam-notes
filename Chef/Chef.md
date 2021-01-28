@@ -52,5 +52,18 @@
 **Cookstyle**
 
 - For checking if there are errors in the cookbooks
-- based on RuboCop
+- Based on RuboCop
 
+**Chef Supermarket**
+- Central location for cookbooks
+
+**Ohai**
+
+- Collect system configuration data
+- Runs on the node together with the Chef Infra Client
+- Ohai is run by Chef Infra Client at the beginning of every Chef run to determine system state
+
+**Chef Inspec**
+
+- is for compliance 
+- `inspec` commandline tool is used for this
