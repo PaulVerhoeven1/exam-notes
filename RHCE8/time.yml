@@ -1,0 +1,27 @@
+---
+- hosts: dev
+  vars:
+    timesync_ntp_servers:
+      - hostname: be.pool.ntp.org
+        pool: yes
+        iburst: yes
+  roles:
+    - rhel-system-roles.timesync
+
+- hosts: test
+  vars:
+    timesync_ntp_servers:
+      - hostname: be.pool.ntp.org
+        pool: yes
+        iburst: yes
+  roles:
+    - rhel-system-roles.timesync
+
+- hosts: database
+  vars:
+    timesync_ntp_servers:
+      - hostname: nl.pool.ntp.org
+        pool: yes
+        iburst: yes
+  roles:
+    - rhel-system-roles.timesync

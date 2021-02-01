@@ -1,0 +1,23 @@
+---
+- name: install required lvm packages
+  yum:
+    name: 'lvm*'
+    state: present
+- name: create volume group
+  lvg:
+    vg: vg_database
+    pvs: /dev/sdb
+    state: present
+
+- name: setup volume group
+  lvol:
+    vg: vg_database
+    lv: storage
+    size: 800
+    state: present
+
+- name: create filesystem
+  filesystem:
+    fstype: xfs
+    dev: /dev/mapper/vg_database-storage
+

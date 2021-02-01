@@ -1,0 +1,45 @@
+---
+- name: setup the required packages
+  hosts: nodes
+  remote_user: root
+  tasks:
+    - name: install packages
+      yum: 
+        name: httpd
+        state: present
+    - name: enable httpd
+      systemd:
+        name: httpd
+        state: started
+    - name: copy the index.html files
+      copy: 
+        src: index.html
+        dest: /var/www/html/index.html
+    - name: enable required ports
+      firewalld:
+        service: http
+        permanent: yes
+        state: enabled
+    - name: enable https
+      firewalld:
+        service: https
+        permanent: yes
+        state: enabled
+    - name: install mariadb
+      yum: 
+        name: mariadb-server
+        state: present 
+    - name: start mariadb
+      systemd:
+        name: mariadb
+        state: started
+    - name: test accesability servers
+      uri: 
+        url: http://localhost
+        return_content: yes
+      register: result
+      until: '"Apache" in result.content'
+      retries: 10
+      delay: 1
+
+    

@@ -1,0 +1,8 @@
+---
+- name: setup repo's on clients
+  hosts: dev
+  tasks:
+    - name: copy repo's
+      copy: 
+        src: centos-base_appstream.repo
+        dest: /etc/yum.repos.d/centos-base_appstream.repo

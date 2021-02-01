@@ -1,0 +1,16 @@
+---
+- name: install haproxy
+  hosts: test
+  roles:
+    - geerlingguy.haproxy
+  tasks:
+  - name: start firewalld
+    systemd:
+      name: firewalld
+      state: started
+  - name: setup the right ports
+    firewalld:
+      port: 80/tcp
+      permanent: yes
+      state: enabled
+    

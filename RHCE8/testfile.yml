@@ -1,0 +1,8 @@
+---
+- name: copy testfile to database servers
+  hosts: database
+  tasks:
+    - name: copy the file
+      template:
+        src: testfile
+        dest: /var/www/html/index.html

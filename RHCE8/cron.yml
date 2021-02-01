@@ -3,8 +3,7 @@
   hosts: nodes
   tasks:
   - name: add cron job
-    cron: minute="20" hour="5" weekday="sun"
-        name="Backup mysql tables (weekly schedule)"
-        cron_file="mysqlbackup-WeeklyBackups"
-        user="root"
-        job="/usr/local/bin/mysqlbackup.WeeklyBackups.sh"
+    cron:
+      name: date
+      user: root
+      job: "date > /cronjob"

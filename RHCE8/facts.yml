@@ -1,0 +1,12 @@
+---
+- name: setup with facts
+  hosts: test
+  tasks:
+    - name: setup the right folder
+      file:
+        path: /systemcheck
+        state: directory
+    - name: copy file to server with template
+      ansible.builtin.template:
+        src: templates/facts_list.j2
+        dest: /systemcheck/facts

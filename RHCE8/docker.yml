@@ -1,14 +1,9 @@
 ---
-  - name: install and configure docker
-    hosts: nodes
-    remote_user: root
-    tasks:
-      - name: install docker
-        yum:
-          name: docker
-          state: present
- 
-
-
-
-      
+- name: install and configure docker
+  hosts: nodes
+  remote_user: root
+  tasks:
+    - name: install docker
+      yum:
+        name: docker
+        state: present

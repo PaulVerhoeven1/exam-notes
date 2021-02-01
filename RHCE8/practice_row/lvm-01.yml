@@ -1,0 +1,8 @@
+---
+- name: setup lvm partitions
+  hosts: nodes
+  become: true
+  tasks:
+    - name: setup lvg
+      vg: vg_database
+

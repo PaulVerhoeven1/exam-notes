@@ -1,0 +1,16 @@
+---
+- name: install required packages
+  hosts: nodes
+  vars_files:
+    - ./vars/02-vars.yml
+
+  tasks:
+  - name: install required packages
+    yum:
+      name: "{{ web_pkgs }}"
+      state: present
+  # - name: start the required packages
+  #   systemd:
+  #     name: "{{ packages }}"
+  #     state: started
+
