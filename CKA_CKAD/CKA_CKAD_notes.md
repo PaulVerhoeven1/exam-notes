@@ -55,11 +55,21 @@ PVC (Persistant Volume Claim) -> Persistant Volume
 **Networking Kubernetes:**
 
 - Services: needed for static ip address to reach the right pod. You need to have a label on the pod or on the deployment!
-
 - Nodeport: The service is exposed at each node’s IP address a static op address. The service can be reached from outside the cluster at nodeip:nodeport
-
 - ClusterIP: The service is internally exposed and is reachable only from within the cluster
-
 - Ingress -> Service -> Deployments / Pods 
-
 - Ingress: mapping path to service port 
+
+### Commandlets 
+
+**Switch between clusters** 
+
+- kubectl config use-context \<cluster-name\>
+
+**Get the yaml file of an running container**
+
+- kubectl get pod \<name\> -o yaml
+
+**Start a container with a different command**
+
+- kubectl run \<container\> --image=busybox --comand -it  -- \<command option\> 
