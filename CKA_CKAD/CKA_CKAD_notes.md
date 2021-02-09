@@ -73,3 +73,13 @@ PVC (Persistant Volume Claim) -> Persistant Volume
 **Start a container with a different command**
 
 - kubectl run \<container\> --image=busybox --comand -it  -- \<command option\> 
+
+**Get all the API versions:**
+
+- kubectl get api-versions
+
+**Vim:** 
+
+- :set paste
+- :set nopaste
+
