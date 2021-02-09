@@ -83,3 +83,17 @@ PVC (Persistant Volume Claim) -> Persistant Volume
 - :set paste
 - :set nopaste
 
+**Filter based on a selector:**
+
+- kubectl get \--selector app=examplepod pod 
+
+**Base64 hashing of a password**
+
+- echo -n password | base84
+- Eq: echo -n this is a verysecurepassword | base64
+
+**Undo a rollout:**
+
+- kubectl rollout undo deployment try1 --to-revision=1 
+- 
+
