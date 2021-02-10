@@ -92,6 +92,11 @@ PVC (Persistant Volume Claim) -> Persistant Volume
 - echo -n password | base84
 - Eq: echo -n this is a verysecurepassword | base64
 
+**View the rollout history of a deployment:**
+
+- kubectl rollout history deployment \<deployment-name>
+- kubectl rollout history deployment \<deployment-name> --revision=1 
+
 **Undo a rollout:**
 
 - kubectl rollout undo deployment try1 --to-revision=1 
