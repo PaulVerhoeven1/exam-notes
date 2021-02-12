@@ -100,5 +100,7 @@ PVC (Persistant Volume Claim) -> Persistant Volume
 **Undo a rollout:**
 
 - kubectl rollout undo deployment try1 --to-revision=1 
-- 
 
+**Get logs of a container**
+
+- kubectl logs \<pod>  -c \<container
