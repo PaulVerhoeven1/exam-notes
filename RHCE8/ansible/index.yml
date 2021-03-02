@@ -1,0 +1,8 @@
+---
+- name: copy html file to database servers
+  hosts: database
+  tasks:
+    - name: copy the file with the template module
+      template:
+        src: templates/index.html.j2
+        dest: /var/www/html/index.html

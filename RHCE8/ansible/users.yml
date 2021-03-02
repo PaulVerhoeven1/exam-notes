@@ -1,0 +1,63 @@
+---
+- name: setup the right users
+  hosts: dev
+  vars_files:
+    - user_list.yml
+    - vault/locker.yml
+  tasks:
+    - name: add the right groups
+      group:
+        name: developers
+        state: present
+    - name: add users
+      user:
+        name: "{{ item.name }}"
+        password: "{{ dev_password | password_hash('sha512') }}"
+        group: developers
+      loop: "{{ users }}"
+      when: item.job == "developer"
+- name: setup the right users
+  hosts: test
+  vars_files:
+    - user_list.yml
+    - vault/locker.yml
+  tasks:
+    - name: add the right groups
+      group:
+        name: developers
+        state: present
+    - name: add the right groups
+      group:
+        name: managers
+        state: present
+    - name: add users
+      user:
+        name: "{{ item.name }}"
+        password: "{{ dev_password | password_hash('sha512') }}"
+        group: developers
+      loop: "{{ users }}"
+      when: item.job == "developer"
+    - name: add users
+      user:
+        name: "{{ item.name }}"
+        password: "{{ mng_password | password_hash('sha512') }}"
+        group: managers
+      loop: "{{ users }}"
+      when: item.job == "manager"
+- name: setup the right users
+  hosts: database
+  vars_files:
+    - user_list.yml
+    - vault/locker.yml
+  tasks:
+    - name: add the right groups
+      group:
+        name: managers
+        state: present
+    - name: add users
+      user:
+        name: "{{ item.name }}"
+        password: "{{ mng_password | password_hash('sha512') }}"
+        group: managers
+      loop: "{{ users }}"
+      when: item.job == "managers"

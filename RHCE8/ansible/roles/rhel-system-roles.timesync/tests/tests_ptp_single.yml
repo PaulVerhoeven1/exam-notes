@@ -1,0 +1,44 @@
+
+- name: Configure time synchronization with single PTP domain
+  tags: tests::expfail
+  hosts: all
+  vars:
+    timesync_ptp_domains:
+      - number: 3
+        interfaces: "{{ [ ansible_default_ipv4['interface'] ] }}"
+  roles:
+    - linux-system-roles.timesync
+
+  pre_tasks:
+    - name: Import tasks
+#      tags: tests::tier1::cleanup
+      import_tasks: get_services_state.yml
+
+  tasks:
+    - meta: flush_handlers
+
+    - name: Check if SW/HW timestamping is supported
+      shell: ethtool -T "{{ ansible_default_ipv4['interface'] }}"
+      register: ethtool
+      ignore_errors: yes
+
+    - block:
+        - name: Wait for services to start
+          wait_for:
+            timeout: 2
+
+        - name: Run pmc
+          command: pmc -u -b 0 -d 3 'GET DOMAIN'
+          register: pmc
+
+        - name: Check PTP domain
+          assert:
+            that:
+              - "'domainNumber 3' in pmc.stdout"
+
+      when: "'SOF_TIMESTAMPING_TX_' in ethtool.stdout"
+
+  post_tasks:
+    - name: Import tasks
+#      tags: tests::tier1::cleanup
+      import_tasks: restore_services_state.yml

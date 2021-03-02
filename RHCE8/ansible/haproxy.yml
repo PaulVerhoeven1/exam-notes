@@ -1,0 +1,11 @@
+---
+- name: install haproxy
+  hosts: test
+  roles:
+    - geerlingguy.haproxy 
+  tasks:
+    - name: setup the right ports
+      firewalld:
+        service: http
+        permanent: yes
+        state: enabled

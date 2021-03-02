@@ -1,0 +1,60 @@
+---
+- name: install the required packages
+  hosts: nodes
+  tasks:
+    - name: install vim
+      yum:
+        name: vim
+        state: present
+- name: install the required packages
+  hosts: dev
+  tasks:
+    - name: install httpd
+      yum:
+        name: httpd
+        state: present
+    - name: install php
+      yum:
+        name: php
+        state: present
+    - name: enable the right ports
+      firewalld:
+        port: 443/tcp
+        permanent: yes
+        state: enabled
+    - name: enable the right ports
+      firewalld:
+        port: 80/tcp
+        permanent: yes
+        state: enabled
+    - name: enable httpd
+      systemd:
+        name: httpd
+        state: started
+
+
+
+- name: install the required packages
+  hosts: database
+  tasks:
+    - name: install httpd
+      yum:
+        name: httpd
+        state: present
+    - name: enable the right ports
+      firewalld:
+        port: 443/tcp
+        permanent: yes
+        state: enabled
+    - name: enable the right ports
+      firewalld:
+        port: 80/tcp
+        permanent: yes
+        state: enabled
+    - name: enable httpd
+      systemd:
+        name: httpd
+        state: started
+
+
+

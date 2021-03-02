@@ -104,3 +104,14 @@ PVC (Persistant Volume Claim) -> Persistant Volume
 **Get logs of a container**
 
 - kubectl logs \<pod>  -c \<container
+
+**Save a file on the pc:**
+
+- cat > test.yaml
+- Paste the file
+- Cntrl + c
+
+**Create a pod with a service:**
+
+- kubectl run simple-webapp-2 --image=kodekloud/webapp-delayed-start --dry-run=client -o yaml  --restart=Always --port=80 --expose
+

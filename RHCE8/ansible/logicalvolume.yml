@@ -1,0 +1,9 @@
+---
+- name: setup the right partitions 
+  hosts: database 
+  vars:
+    - hdd: /dev/sdb
+    - vg_name: vg_database
+    - lv_name: storage
+  roles:
+    - lvm

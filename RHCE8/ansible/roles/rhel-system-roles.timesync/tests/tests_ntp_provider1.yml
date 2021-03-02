@@ -1,0 +1,37 @@
+
+- name: Configure NTP with default provider
+  hosts: all
+  vars:
+    timesync_ntp_servers:
+      - hostname: 172.16.123.1
+  roles:
+    - linux-system-roles.timesync
+
+  pre_tasks:
+    - name: Import tasks
+#      tags: tests::tier1::cleanup
+      import_tasks: get_services_state.yml
+
+    - name: Remove NTP providers
+      package: name={{ item }} state=absent
+      with_items:
+        - chrony
+        - ntp
+
+  post_tasks:
+    - name: Wait for services to start
+      wait_for:
+        timeout: 2
+
+    - name: Get list of currently used time sources
+      shell: chronyc -n sources || ntpq -pn
+      register: sources
+
+    - name: Check time sources
+      assert:
+        that:
+          - "'172.16.123.1' in sources.stdout"
+
+    - name: Import tasks
+#      tags: tests::tier1::cleanup
+      import_tasks: restore_services_state.yml

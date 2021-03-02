@@ -1,0 +1,38 @@
+---
+# tasks file for lvm
+- name: install lvm tools 
+  yum:
+    name: 'lvm*'
+    state: present
+
+- name: create parition on {{ hdd }}
+  parted: 
+    device: "{{ hdd }}"
+    number: 1
+    part_start: 1MiB
+    part_end: 800MiB
+    part_type: primary
+    state: present
+    unit: MiB
+- name: Create volume group {{ vg_name }} using  {{ hdd}} 1
+  lvg:
+    pvs: "{{ hdd }}1"
+    vg: "{{ vg_name }}"
+    state: present
+- name: Create a logical volume {{ lv_name }}
+  lvol:
+    lv: "{{ lv_name }}"
+    vg: "{{ vg_name }}"
+    size: 512M
+    state: present
+  when: lv_name not in ansible_facts['lvm']['lvs']
+- name: Create xfs filesystem on {{ lv_name }}
+  filesystem:
+    dev: /dev/{{ vg_name }}/{{ lv_name }}
+    fstype: xfs
+- name: Ensure Correct Capacity for {{ lv_name }}
+  lvol:
+    lv: "{{ lv_name }}"
+    vg: "{{ vg_name }}"
+    size: 512M
+    resizefs: true

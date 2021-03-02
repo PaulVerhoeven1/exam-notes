@@ -1,0 +1,8 @@
+---
+- name: setup cron on all the nodes
+  hosts: nodes
+  tasks:
+    - name: setup cron
+      cron:
+        name: "date cron"
+        job: "date >> /cronjob"  

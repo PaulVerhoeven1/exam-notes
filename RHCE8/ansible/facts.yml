@@ -1,0 +1,8 @@
+---
+- name: copy files from template to the machines
+  hosts: nodes
+  tasks:
+    - name: copy the files    
+      template:
+        src: templates/facts_list.j2
+        dest: /systemcheck

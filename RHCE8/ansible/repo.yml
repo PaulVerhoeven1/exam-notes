@@ -1,0 +1,22 @@
+---
+- name: install repos
+  hosts: nodes
+  become: true
+  tasks:
+    - name: copy setup repo
+      yum_repository:
+        name: CentOs-Base
+        description: CentOs-Base
+        baseurl: http://mirror.centos.org/$contentdir/$releasever/BaseOS/$basearch/os/
+        gpgkey: file:///etc/pki/rpm-gpg/RPM-GPG-KEY-centosofficial
+        gpgcheck: true
+        enabled: yes
+    - name: setup repo     
+      yum_repository:
+        name: CentOs-Appstream
+        description: CentOs-Appstream
+        baseurl:  http://mirror.centos.org/$contentdir/$releasever/AppStream/$basearch/os/
+        gpgkey: file:///etc/pki/rpm-gpg/RPM-GPG-KEY-centosofficial
+        gpgcheck: true
+        enabled: yes
+

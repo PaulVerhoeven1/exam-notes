@@ -1,0 +1,15 @@
+---
+- name: paramater
+  hosts: nodes
+  tasks:
+    - name: set vm swapiness
+      sysctl:
+        name: vm.swappiness
+        value: '10'
+        state: present
+      when:  ansible_memtotal_mb > 2048
+
+    - name: check what the available memory is
+      debug:
+        msg: "This server has less then 2048mb Ram, the amount of ram is: {{ ansible_memtotal_mb }}"
+      when: ansible_memtotal_mb < 2048
