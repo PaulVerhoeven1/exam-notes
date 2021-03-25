@@ -14,3 +14,15 @@
 
 4: SPF Algorithm of Dijkstra 
 
+| Description                     | Command                              |
+| ------------------------------- | ------------------------------------ |
+| show neighbors                  | show ip ospf neighbor                |
+| create point-to-point ospf      | ip ospf network point-to-point       |
+| advertise default route in ospf | default-information originate always |
+|                                 |                                      |
+|                                 |                                      |
+|                                 |                                      |
+|                                 |                                      |
+|                                 |                                      |
+|                                 |                                      |
+

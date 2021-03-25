@@ -1,7 +1,12 @@
-How do you set the timeout for console/remote login sessions?
+| Description                              | Command                            |
+| ---------------------------------------- | ---------------------------------- |
+| show the status of the ssh server        | show ip ssh                        |
+| show all the ssh connections             | show ssh                           |
+| generate ssh keys                        | crypto key generate RSA            |
+| set timeout for console or remote logins | **exec-timeout** *minutes seconds* |
+|                                          |                                    |
+|                                          |                                    |
+|                                          |                                    |
+|                                          |                                    |
+|                                          |                                    |
 
-- **exec-timeout** *minutes seconds*
-
-Generate keys
-
-- crypto key generate RSA

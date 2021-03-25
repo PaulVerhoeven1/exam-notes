@@ -13,5 +13,5 @@ More information: [link](https://community.fs.com/blog/lacp-vs-pagp-comparison.h
 
 **Change BridgeID Priority**
 
-- **spanning-tree vlan** \<vlan-id> **priority** \<value>
+- **spanning-tree vlan** \<vlan-id\> **priority** \<value\>
 
