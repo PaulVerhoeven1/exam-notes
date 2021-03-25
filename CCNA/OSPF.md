@@ -32,7 +32,7 @@ Within hello packet: Router ID in form of ip adress.
 
  
 
-**Niet handmatig router id ingesteld**: Loopback Interface 
+**if no manual router id >**: Loopback Interface 
 
 **Loopback Interface:** software based
 
