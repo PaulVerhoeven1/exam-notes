@@ -12,7 +12,7 @@
 
 **Inside:** Own IP address
 
-**Outside:** outside of your own private domain
+**Outside local:** The IP address of an outside host as it appears to the inside network.
 
 **Outside global:** Public ip adres outside of your domain
 

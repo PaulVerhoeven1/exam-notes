@@ -69,6 +69,12 @@ Begrippen:
 
 - spanning-tree pathcost method long
 
-Root Port:
+**Root Port:**
 
 - One interface on every non-root bridge with the lowest cost to reach the root bridge.
+
+
+
+**Portfast port:**
+
+- Disable spanning tree on a port

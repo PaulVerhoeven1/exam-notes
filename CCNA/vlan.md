@@ -27,6 +27,16 @@
 
 - Multiple vlan's over 1 lankabel (router on a stick)
 
+
+
+
+
+**Configure trunking:**
+
+- switchport trunk ecapsulation dot1q (interface level)
+
+  
+
 **Subinterface**
 
 - a virtual port over a interface. This is needed beceause on 1 interface can be applied 1 IP address. With subinterfaces you can set up multiple ip address on a fysical port
