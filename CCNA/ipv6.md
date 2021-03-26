@@ -6,8 +6,8 @@
 
 - Multicast - transmission to several recipients.
 
-  - Assigned    FF0s::/8
-  - Solicited Node    FF02::1:FF00:0000/104
+  - Assigned FF0s::/8
+  - Solicited Node FF02::1:FF00:0000/104
 
 - Anycast
 
