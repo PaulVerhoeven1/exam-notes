@@ -1,0 +1,3 @@
+hostname: 
+ip_address:
+os_family: 
