@@ -1,0 +1,26 @@
+---
+- name: set the sshd deamon
+  hosts: all
+  tasks:
+    - name: modify X11Forwarding
+      lineinfile:
+        path: /etc/ssh/sshd_config
+        regexp: '^X11Forwarding '
+        insertafter: '^X11Forwarding '
+        line: X11Forwarding no
+    - name: Modify MaxAuthTries
+      lineinfile:
+        path: /etc/ssh/sshd_config
+        regexp: '^MaxAuthTries '
+        insertafter: '^#MaxAuthTries '
+        line: MaxAuthTries 3
+    - name: Restart ssh
+      systemd:
+        name: sshd
+        state: restarted
+        enabled: yes
+    - shell:
+        cmd: "grep -e ^X11Forwarding -e ^MaxAuthTries /etc/ssh/sshd_config"
+      register: sshd
+    - debug:
+        msg: "{{ sshd.stdout_lines }}"

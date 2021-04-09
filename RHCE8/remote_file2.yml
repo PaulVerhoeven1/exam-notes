@@ -1,0 +1,23 @@
+---
+- name: copy a file from a remote url and saving that file on a hosts
+  hosts: webservers
+  become: true
+  gather_facts: true
+  tasks:
+    - name: copy a file
+      get_url:
+        url: https://raw.githubusercontent.com/PaulVerhoeven1/exam-notes/main/RHCE8/lol.txt
+        dest: /var/lol.txt
+    - name: changing the files based on the host info
+      lineinfile:
+        path: /var/lol.txt
+        regexp: '^ip_address:'
+        insertafter: "^ip_address:"
+        line: "ip_address: {{ ansible_facts['default_ipv4']['address'] }}"
+    - name: check if it's right
+      shell:
+        cmd: "cat /var/lol.txt"
+      register: cat
+    - name: debug
+      debug:
+        msg: "{{ cat.stdout_lines }}"

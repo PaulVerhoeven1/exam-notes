@@ -1,0 +1,19 @@
+---
+- name: copy some shit haha
+  hosts: all
+  become: true
+  tasks:
+    - name: copy files
+      copy:
+        content: |
+          {% for host in groups['webservers'] %}
+          hostname {{ hostvars[host].ansible_hostname  }}
+          ip {{ hostvars[host].ansible_default_ipv4.address  }}
+          {% endfor %}
+        dest: /tmp/lol.txt
+    - name: test contents
+      shell:
+        cmd: "cat /tmp/lol.txt"
+      register: lol
+    - debug:
+        msg: "{{ lol.stdout_lines }}"

@@ -1,0 +1,24 @@
+---
+- name: copy a server list file to some clients
+  hosts: all
+  become: true
+  tasks:
+    - template:
+        src: ./templates/server_list.j2
+        dest: /etc/server_list.txt
+        owner: ansible
+        mode: '0600'
+        setype: net_conf_t
+      when:
+        - hostvars[inventory_hostname]['inventory_hostname'] in hostvars[inventory_hostname]['groups']['db']
+    - name: debug
+      shell:
+        cmd: "cat /etc/server_list.txt"
+      register: server
+      when:
+        - hostvars[inventory_hostname]['inventory_hostname'] in hostvars[inventory_hostname]['groups']['db']
+    - name: debug
+      debug:
+        msg: "{{ server.stdout_lines }}"
+      when:
+        - hostvars[inventory_hostname]['inventory_hostname'] in hostvars[inventory_hostname]['groups']['db']
