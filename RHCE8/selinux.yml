@@ -1,0 +1,14 @@
+---
+- name: selinux
+  hosts: all
+  become: true
+  vars:
+    selinux_booleans:
+      - 'httpd_can_network_connect:  state: 'on'
+      - persistent: 'yes' }
+  tasks:
+    - when:
+        - hostvars[inventory_hostname]['inventory_hostname'] in hostvars[inventory_hostname]['groups']['webservers']
+      include_role:
+        name: linux-system-roles.selinux
+

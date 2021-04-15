@@ -1,0 +1,19 @@
+---
+- name: setup the packages
+  hosts: db
+  become: true
+  tasks:
+    - name: setup the required packages
+      yum:
+        name: "mysql"
+        state: present
+    - name: enable firewall
+      systemd:
+        name: firewalld
+        state: started
+        enabled: yes
+    - name: enable firewall ports
+      firewalld:
+        port: 3306/tcp
+        permanent: yes
+        state: enabled

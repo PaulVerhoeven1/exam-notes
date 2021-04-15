@@ -1,0 +1,22 @@
+---
+- name: copy motd file thing haha
+  hosts: all
+  tasks:
+    - name: on the webservers
+      when:
+        - hostvars[inventory_hostname]['inventory_hostname'] in hostvars[inventory_hostname]['groups']['webservers']
+      copy:
+        content: "welcome on the webserver"
+        dest: /etc/motd
+    - name: on the db
+      when:
+        - hostvars[inventory_hostname]['inventory_hostname'] in hostvars[inventory_hostname]['groups']['db']
+      copy:
+        content: "welcome on the db"
+        dest: /etc/motd
+    - name: on the storage server
+      when:
+        - hostvars[inventory_hostname]['inventory_hostname'] in hostvars[inventory_hostname]['groups']['storage']
+      copy:
+        content: "welcome on the storage server"
+        dest: /etc/motd
