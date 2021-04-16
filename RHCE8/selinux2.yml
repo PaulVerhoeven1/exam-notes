@@ -1,0 +1,12 @@
+---
+- name: 'TASK 17: Security'
+  hosts: all
+  vars:
+    selinux_booleans:
+      - { name: 'httpd_can_network_connect', state: 'on', persistent: 'yes' }
+  tasks:
+    - when:
+        - inventory_hostname in groups['webservers']
+      include_role:
+        name: linux-system-roles.selinux
+
