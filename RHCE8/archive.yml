@@ -6,8 +6,3 @@
       archive:
         path: /home
         dest: /tmp/lol.tar
-    - name: test
-      archive:
-	path:
-	dest:
-
