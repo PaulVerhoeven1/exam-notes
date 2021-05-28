@@ -1,0 +1,47 @@
+---
+- name: setup the host
+  hosts: all
+  become: true
+  tasks:
+    - name: install lvm package
+      yum:
+        name: "lvm*"
+        state: present
+    - name: setup storage
+      parted:
+        device: /dev/sdc
+        number: 1
+        state: present
+      ignore_errors: true  
+      register: parted
+    - name: error output
+      debug:
+        msg: "/dev/sdc does not exists"
+      when: " 'Could not stat device /dev/sdc' in parted.err"
+      ignore_errors: true
+    - name: create volume group
+      lvg:
+        vg: resources
+        pvs: /dev/sdc1
+        pesize: 2G
+      ignore_errors: true
+      register: lvg
+    - name: create logical volume
+      lvol:
+        lv: lv_test
+        vg: resources
+        size: 1G
+      ignore_errors: true
+      register: lvol   
+    - name: error output2
+      debug:
+        msg: "volume group does not exists"
+      when: "'Device /dev/sdc1 not found.' in lvg.msg"
+      ignore_errors: true
+    - name: lsblk
+      shell:
+        cmd: "lsblk"
+      register: lsblk
+    - name: get the outut
+      debug:
+        msg: "{{ lsblk.stdout_lines }}"
