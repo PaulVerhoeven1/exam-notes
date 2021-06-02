@@ -1,0 +1,60 @@
+---
+- name: setup the storage
+  hosts: all
+  tasks:
+    - name: remove storage
+      parted:
+        device: /dev/sdc
+        number: 1
+        state: present
+      ignore_errors: true
+      register: sdc
+
+    - name: debug
+      parted:
+        device: /dev/sdb
+        number: 1
+        state: present
+      when: "'Could not stat device /dev/sdc' in sdc.err "
+      ignore_errors: true
+
+    - name: add vg
+      lvg:
+        vg: resources
+        pvs: /dev/sdc1
+        state: present
+      ignore_errors: true
+      register: vg
+
+    - name: debug
+      lvg:
+        vg: resources2
+        pvs: /dev/sdb1
+        state: present
+      when: "'Device /dev/sdc1' in vg.msg"
+      ignore_errors: true
+
+    - name: setup lv
+      lvol:
+        vg: resources
+        lv: data
+        size: 1G
+      ignore_errors: true
+      register: lv
+
+    - name: debug
+      lvol:
+        vg: resources2
+        lv: data
+        size: 1G
+      ignore_errors: true
+      when: "'Volume group \"resources\" not found' in lv.err "
+
+    - name: storage
+      shell:
+        cmd: "lsblk"
+      register: lsblk
+
+    - name: output lsblk
+      debug:
+        msg: "{{ lsblk.stdout_lines }}"
