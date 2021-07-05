@@ -1,11 +1,8 @@
-# Example 1: Demonstrating the islower() method, it accepts lower-case letters only:
-print("Moooo".islower())
-print('moooo'.islower())
+# What is the expected result of the following code?
+class Stack:
+    def __init__(self):
+        self.__stack_list = []
 
 
-
-print("******")
-# The isupper() method concentrates on upper-case letters only.
-print("Ma".isupper())
-print('maa'.isupper())
-print('MAAA'.isupper())
+stack_object = Stack()
+print(len(stack_object.__stack_list))
