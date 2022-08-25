@@ -1,4 +1,4 @@
-**nodeSelector:  ** to limit on which node the pod can be scheduled on. Node selectors use node labels to filter suitable nodes.
+**nodeSelector: ** to limit on which node the pod can be scheduled on. Node selectors use node labels to filter suitable nodes.
 
 example:
 
