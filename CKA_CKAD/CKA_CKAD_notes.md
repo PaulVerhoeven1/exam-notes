@@ -41,8 +41,6 @@
 - Kubectl get secret secret1
 - Kubectl describe secret secret1
 
-
-
 PVC (Persistant Volume Claim) -> Persistant Volume 
 
 **Accessmodes Persistant volume:**
@@ -50,7 +48,6 @@ PVC (Persistant Volume Claim) -> Persistant Volume
 - ReadWriteOnce -- the volume can be mounted as read-write by a single node
 - ReadOnlyMany -- the volume can be mounted read-only by many nodes
 - ReadWriteMany -- the volume can be mounted as read-write by many nodes
-
 
 **Networking Kubernetes:**
 
@@ -60,7 +57,7 @@ PVC (Persistant Volume Claim) -> Persistant Volume
 - Ingress -> Service -> Deployments / Pods 
 - Ingress: mapping path to service port 
 
-### Commandlets 
+### Commandlets
 
 **Switch between clusters** 
 
@@ -114,4 +111,3 @@ PVC (Persistant Volume Claim) -> Persistant Volume
 **Create a pod with a service:**
 
 - kubectl run simple-webapp-2 --image=kodekloud/webapp-delayed-start --dry-run=client -o yaml  --restart=Always --port=80 --expose
-
