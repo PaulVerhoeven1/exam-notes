@@ -29,7 +29,7 @@
 
 **ConfigMap (create):**
 
-- kubectl create cm test --from-literal=username=jan —dry-run -o yaml > test2.yaml
+- kubectl create cm test --from-literal=username=jan --dry-run=client -o yaml > test2.yaml
 - Kubectl get cm test
 - Kubectl describe cm test
 - kubectl create cm test —from-file=test2.yaml
@@ -41,7 +41,7 @@
 - Kubectl get secret secret1
 - Kubectl describe secret secret1
 
-PVC (Persistant Volume Claim) -> Persistant Volume 
+**PVC (Persistant Volume Claim) -> Persistant Volume**
 
 **Accessmodes Persistant volume:**
 
@@ -74,6 +74,12 @@ PVC (Persistant Volume Claim) -> Persistant Volume
 **Get all the API versions:**
 
 - kubectl get api-versions
+
+**Get events in a namespace**
+
+- kubectl get events 
+
+- kubectl get events -w #follow the output
 
 **Vim:** 
 
