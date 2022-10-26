@@ -9,12 +9,12 @@
 **Scaling deployment**
 
 - kubectl get deployments
-- kubectl scale deployment \<deployment name\> —replicas=3
-- Kubectl edit deployment \<deployment name\>
+- kubectl scale deployment <deployment name> --replicas=3
+- Kubectl edit deployment <deployment name>
 
 **Labels** 
 
-- Kubectl get all —selector app=nginx
+- Kubectl get all --selector app=nginx
 
 **StatefulSets:**
 
@@ -32,12 +32,12 @@
 - kubectl create cm test --from-literal=username=jan --dry-run=client -o yaml > test2.yaml
 - Kubectl get cm test
 - Kubectl describe cm test
-- kubectl create cm test —from-file=test2.yaml
+- kubectl create cm test --from-file=test2.yaml
 
 **Secret (create):**
 
 - Kubectl create secret generic secret1 --from-literal=username=jan --from-literal=password=wachtwoord -o yaml --dry-run > secret.yaml’
-- kubectl create secret generic secret1 —from-file=secret.yaml
+- kubectl create secret generic secret1 --from-file=secret.yaml
 - Kubectl get secret secret1
 - Kubectl describe secret secret1
 
@@ -61,15 +61,15 @@
 
 **Switch between clusters** 
 
-- kubectl config use-context \<cluster-name\>
+- kubectl config use-context <cluster-name>
 
 **Get the yaml file of an running container**
 
-- kubectl get pod \<name\> -o yaml
+- kubectl get pod <name> -o yaml
 
 **Start a container with a different command**
 
-- kubectl run \<container\> --image=busybox --comand -it  -- \<command option\> 
+- kubectl run <container> --image=busybox --comand -it  -- <command_ option>
 
 **Get all the API versions:**
 
@@ -97,8 +97,8 @@
 
 **View the rollout history of a deployment:**
 
-- kubectl rollout history deployment \<deployment-name>
-- kubectl rollout history deployment \<deployment-name> --revision=1 
+- kubectl rollout history deployment <deployment-name>
+- kubectl rollout history deployment <deployment-name> --revision=1 
 
 **Undo a rollout:**
 
@@ -106,7 +106,8 @@
 
 **Get logs of a container**
 
-- kubectl logs \<pod>  -c \<container
+- kubectl logs <pod> -c <container>
+- kubectl logs <pod>  
 
 **Save a file on the pc:**
 
