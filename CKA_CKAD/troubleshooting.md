@@ -15,5 +15,4 @@ On the node:
 - journalctl -u kubelet
 
 
-
 kubectl get pods -n kube-system
