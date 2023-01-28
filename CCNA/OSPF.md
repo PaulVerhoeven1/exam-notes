@@ -1,5 +1,3 @@
-
-
 1: Hello Packets
 
 2: LSA
@@ -22,15 +20,11 @@
 
 Within hello packet: Router ID in form of ip adress. 
 
- 
-
 **Router ID Veranderen:** 
 
 \- Router OSPF 10 
 
 \- Router-ID 1.1.1.1 0.0.0.0 
-
- 
 
 **if no manual router id >**: Loopback Interface 
 
@@ -42,18 +36,15 @@ Within hello packet: Router ID in form of ip adress.
 
 \- IP Address 1.1.1.1 255.255.255.255 
 
- 
-
 **DR/BDR election proces:** 
 
 1. Highest priority 
-2. Highest router id 
 
+2. Highest router id 
+   
    1. manual
    2. Highestloopback interface adres 
    3. Highest interface ip address 
-
-
 
 **OSPF tables:** 
 
@@ -69,11 +60,8 @@ Within hello packet: Router ID in form of ip adress.
 
 - Show ip Route 
 
-
 ![image-20210319092846029](images/OSPF/image-20210319092846029.png)
 
 ![image-20210319092758929](images/OSPF/image-20210319092758929.png)
-
-
 
 ![image-20210319102558330](images/OSPF/image-20210319102558330.png)

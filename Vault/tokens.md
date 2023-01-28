@@ -6,8 +6,6 @@ When you revoke the main token all the tokens that are created with that main to
 
 All tokens have an TTL except the root token this is infinate. 
 
-
-
 **Token Accessor:** endpoint where you can see info about a token
 
 **Orphaned tokens:** token that has no parent
@@ -28,8 +26,6 @@ All tokens have an TTL except the root token this is infinate.
 | Creation Scales with Performance Standby Node Count | No                                                      | Yes                                             |
 | Cost                                                | Heavyweight; multiple storage writes per token creation | Lightweight; no storage cost for token creation |
 
-
-
 2 kinds of tokens:
 
 ##### Service Tokens
@@ -46,11 +42,7 @@ All tokens have an TTL except the root token this is infinate.
 
 - Low on rights and for high througbput apps which reduces the the stress on the storage backend and improves the performance
 
-- Can''t create child tokens and is not renewable
-
-
-
-
+- Can't create child tokens and is not renewable
 
 Get lease ID:
 
@@ -59,7 +51,3 @@ Get lease ID:
 Revoke lease:
 
 - vault lease revoke aws/creds/<rolename>/<lease_id>
-
-
-
-
