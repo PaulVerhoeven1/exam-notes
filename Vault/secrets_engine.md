@@ -1,5 +1,21 @@
 **Vault Secrets Engine**
 
+- Can be called with a role
+
+**What is a role?**
+
+- Human readable identifier to an action which can have:
+  
+  - Permissions
+  
+  - Groups
+  
+  - Policies
+
+**How to create a role**
+
+`vault write <secrets_engiine>/roles/<role_name> ...`
+
 **KV1**
 
 **KV2**
@@ -33,6 +49,8 @@
 **Dynamic Secrets**
 
 - Vault generates secrets for you
+- It will be generate when you read it
+- 
 
 **Static Secrets**
 

@@ -44,10 +44,18 @@ All tokens have an TTL except the root token this is infinate.
 
 - Can't create child tokens and is not renewable
 
-Get lease ID:
+**Create a token**
 
-- vault read aws/creds/<rolename>
+`vault token create`
 
-Revoke lease:
+**Revoke all the tokens for an auth method**
 
-- vault lease revoke aws/creds/<rolename>/<lease_id>
+`vault token revoke -mode path auth/github`
+
+**Get lease ID:**
+
+- vault read aws/creds/<role_name>
+
+**Revoke lease:**
+
+- vault lease revoke aws/creds/<role_name>/<lease_id>
