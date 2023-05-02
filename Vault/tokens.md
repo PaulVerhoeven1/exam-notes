@@ -2,9 +2,9 @@ Tokens are the authentication method for vault which has an random ID.
 
 Default there is a authentication method installed: Vault token
 
-When you revoke the main token all the tokens that are created with that main token will also not be valid anymore. 
+When you revoke the main token all the tokens that are created with that main token will also not be valid anymore.
 
-All tokens have an TTL except the root token this is infinate. 
+All tokens have an TTL except the root token this is infinate.
 
 **Token Accessor:** endpoint where you can see info about a token
 
@@ -43,6 +43,18 @@ All tokens have an TTL except the root token this is infinate.
 - Low on rights and for high througbput apps which reduces the the stress on the storage backend and improves the performance
 
 - Can't create child tokens and is not renewable
+
+
+
+**Periodic Service Tokens**
+
+**Root** or **sudo** users have the ability to generate **periodic tokens**.
+Periodic tokens have a TTL (validity period), but no max TTL; therefore,
+they may live for an infinite duration of time so long as they are renewed
+within their TTL. This is useful for long-running services that cannot handle
+regenerating a token.
+
+
 
 **Create a token**
 

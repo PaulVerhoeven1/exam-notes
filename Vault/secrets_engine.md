@@ -20,6 +20,10 @@
 
 **KV2**
 
+`vault kv rollback -version=1 secret/training`
+
+`vault kv get -field=username secret/training`
+
 **Cubbyhole**
 
 - Default configured
