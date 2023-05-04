@@ -19,5 +19,3 @@ ui = true
 **Start the server**
 
 `vault server -config=config.hcl`
-
-

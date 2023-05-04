@@ -1,7 +1,5 @@
 Pluggable architecture with a lot of customizable options
 
-
-
 **Authentication methods:**
 
 - Ways to authenticate with vault
@@ -39,7 +37,3 @@ Pluggable architecture with a lot of customizable options
 - PKI
 
 - SSH
-
-
-
-
