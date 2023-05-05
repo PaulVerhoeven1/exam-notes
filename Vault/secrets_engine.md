@@ -50,6 +50,22 @@
 
    
 
+**Rotate key transit secrets engine**`
+
+`vault write -f transit/keys/<key>/rotate`
+
+**Rewrap encrypted data with the new key**
+
+`vault write transit/rewrap/orders ciphertext=$(cat cipher.txt)`
+
+**Change the minimal encryption version**
+
+`vault write transit/keys/orders/config min_decryption_version=5`
+
+
+
+
+
 **Dynamic Secrets**
 
 - Vault generates secrets for you

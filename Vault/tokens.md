@@ -44,6 +44,20 @@ All tokens have an TTL except the root token this is infinate.
 
 - Can't create child tokens and is not renewable
 
+- Can't be revoked and does not have a cubbyhole
+
+**Creating a batch token**
+
+`vault token create -type=batch`
+
+
+
+**Check if a token has permission to access a path**
+
+`vault write sys/capabilities token="<token>" path="sys/auth/approle"`
+
+
+
 
 
 **Periodic Service Tokens**
@@ -53,8 +67,6 @@ Periodic tokens have a TTL (validity period), but no max TTL; therefore,
 they may live for an infinite duration of time so long as they are renewed
 within their TTL. This is useful for long-running services that cannot handle
 regenerating a token.
-
-
 
 **Create a token**
 
@@ -66,8 +78,12 @@ regenerating a token.
 
 **Get lease ID:**
 
-- vault read aws/creds/<role_name>
+`vault read aws/creds/<role_name>`
 
 **Revoke lease:**
 
-- vault lease revoke aws/creds/<role_name>/<lease_id>
+`vault lease revoke aws/creds/<role_name>/<lease_id>`
+
+**Create a vault policy token**
+
+`vault policy write jenkins jenkins.hcl`
