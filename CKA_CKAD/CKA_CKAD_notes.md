@@ -1,20 +1,21 @@
 **Show Kubernetes config:**
 
-- kubectl config view
+`kubectl config view`
 
-**Creating yaml file:** 
+**Creating yaml file:**
 
-- Kubectl create deployment —dry-run —image=nginx —output=yaml newdep > newdep.yaml
+`kubectl create deployment —dry-run —image=nginx —output=yaml newdep > newdep.yaml`
 
 **Scaling deployment**
 
-- kubectl get deployments
-- kubectl scale deployment <deployment name> --replicas=3
-- Kubectl edit deployment <deployment name>
+```
+kubectl get deployments
+kubectl scale deployment <deployment name> --replicas=3
+Kubectl edit deployment <deployment name>
+```
+**Labels**
 
-**Labels** 
-
-- Kubectl get all --selector app=nginx
+`Kubectl get all --selector app=nginx`
 
 **StatefulSets:**
 
@@ -28,19 +29,20 @@
 - Great for services that are running everywhere (monitoring daemons, log collectors etc)
 
 **ConfigMap (create):**
-
-- kubectl create cm test --from-literal=username=jan --dry-run=client -o yaml > test2.yaml
-- Kubectl get cm test
-- Kubectl describe cm test
-- kubectl create cm test --from-file=test2.yaml
-
+```
+kubectl create cm test --from-literal=username=jan --dry-run=client -o yaml > test2.yaml
+kubectl get cm test
+kubectl describe cm test
+kubectl create cm test --from-file=test2.yaml
+```
 **Secret (create):**
 
-- Kubectl create secret generic secret1 --from-literal=username=jan --from-literal=password=wachtwoord -o yaml --dry-run > secret.yaml’
-- kubectl create secret generic secret1 --from-file=secret.yaml
-- Kubectl get secret secret1
-- Kubectl describe secret secret1
-
+```
+kubectl create secret generic secret1 --from-literal=username=jan --from-literal=password=wachtwoord -o yaml --dry-run > secret.yaml’
+kubectl create secret generic secret1 --from-file=secret.yaml
+kubectl get secret secret1
+kubectl describe secret secret1
+```
 **PVC (Persistant Volume Claim) -> Persistant Volume**
 
 **Accessmodes Persistant volume:**
@@ -59,56 +61,58 @@
 
 ### Commandlets
 
-**Switch between clusters** 
+**Switch between clusters**
 
-- kubectl config use-context <cluster-name>
+`kubectl config use-context <cluster_name>`
 
 **Get the yaml file of an running container**
 
-- kubectl get pod <name> -o yaml
+`kubectl get pod <name> -o yaml`
 
 **Start a container with a different command**
 
-- kubectl run <container> --image=busybox --comand -it  -- <command_ option>
+`kubectl run <container> --image=busybox --comand -it  -- <command_option>`
 
 **Get all the API versions:**
 
-- kubectl get api-versions
+`kubectl get api-versions`
 
 **Get events in a namespace**
 
-- kubectl get events 
+`kubectl get events`
+or
+`kubectl get events -w` #follow the output
 
-- kubectl get events -w #follow the output
-
-**Vim:** 
+**Vim:**
 
 - :set paste
 - :set nopaste
 
 **Filter based on a selector:**
 
-- kubectl get \--selector app=examplepod pod 
+`kubectl get --selector app=examplepod pod`
 
 **Base64 hashing of a password**
 
-- echo -n password | base84
+- echo -n password | base64
 - Eq: echo -n this is a verysecurepassword | base64
 
 **View the rollout history of a deployment:**
 
-- kubectl rollout history deployment <deployment-name>
-- kubectl rollout history deployment <deployment-name> --revision=1 
+```
+kubectl rollout history deployment <deployment-name>
+kubectl rollout history deployment <deployment-name> --revision=1
+```
 
 **Undo a rollout:**
 
-- kubectl rollout undo deployment try1 --to-revision=1 
+`kubectl rollout undo deployment try1 --to-revision=1 `
 
 **Get logs of a container**
-
-- kubectl logs <pod> -c <container>
-- kubectl logs <pod>  
-
+```
+kubectl logs <pod> -c <container>
+kubectl logs <pod>
+```
 **Save a file on the pc:**
 
 - cat > test.yaml
@@ -117,4 +121,4 @@
 
 **Create a pod with a service:**
 
-- kubectl run simple-webapp-2 --image=kodekloud/webapp-delayed-start --dry-run=client -o yaml  --restart=Always --port=80 --expose
+`kubectl run simple-webapp-2 --image=kodekloud/webapp-delayed-start --dry-run=client -o yaml  --restart=Always --port=80 --expose`
