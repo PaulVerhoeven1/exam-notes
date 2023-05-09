@@ -21,3 +21,6 @@
 sudo systemctl daemon-reload
 sudo systemctl restart kubelet
 ```
+
+## uncordon the node
+`kubectl uncordon <node>`
