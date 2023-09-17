@@ -13,9 +13,12 @@ kubectl get deployments
 kubectl scale deployment <deployment name> --replicas=3
 Kubectl edit deployment <deployment name>
 ```
+
 **Labels**
 
-`Kubectl get all --selector app=nginx`
+```
+kubectl get all --selector app=nginx
+```
 
 **StatefulSets:**
 
@@ -29,12 +32,14 @@ Kubectl edit deployment <deployment name>
 - Great for services that are running everywhere (monitoring daemons, log collectors etc)
 
 **ConfigMap (create):**
+
 ```
 kubectl create cm test --from-literal=username=jan --dry-run=client -o yaml > test2.yaml
 kubectl get cm test
 kubectl describe cm test
 kubectl create cm test --from-file=test2.yaml
 ```
+
 **Secret (create):**
 
 ```
@@ -43,6 +48,7 @@ kubectl create secret generic secret1 --from-file=secret.yaml
 kubectl get secret secret1
 kubectl describe secret secret1
 ```
+
 **PVC (Persistant Volume Claim) -> Persistant Volume**
 
 **Accessmodes Persistant volume:**
@@ -56,8 +62,8 @@ kubectl describe secret secret1
 - Services: needed for static ip address to reach the right pod. You need to have a label on the pod or on the deployment!
 - Nodeport: The service is exposed at each node’s IP address a static op address. The service can be reached from outside the cluster at nodeip:nodeport
 - ClusterIP: The service is internally exposed and is reachable only from within the cluster
-- Ingress -> Service -> Deployments / Pods 
-- Ingress: mapping path to service port 
+- Ingress -> Service -> Deployments / Pods
+- Ingress: mapping path to service port
 
 ### Commandlets
 
@@ -80,12 +86,13 @@ kubectl describe secret secret1
 **Get events in a namespace**
 
 `kubectl get events`
-or
-`kubectl get events -w` #follow the output
+or to follow the output:
 
+`kubectl get events -w` 
 **Vim:**
 
 - :set paste
+
 - :set nopaste
 
 **Filter based on a selector:**
@@ -106,13 +113,17 @@ kubectl rollout history deployment <deployment-name> --revision=1
 
 **Undo a rollout:**
 
-`kubectl rollout undo deployment try1 --to-revision=1 `
+```
+kubectl rollout undo deployment try1 --to-revision=1
+```
 
 **Get logs of a container**
+
 ```
 kubectl logs <pod> -c <container>
 kubectl logs <pod>
 ```
+
 **Save a file on the pc:**
 
 - cat > test.yaml
@@ -121,4 +132,6 @@ kubectl logs <pod>
 
 **Create a pod with a service:**
 
-`kubectl run simple-webapp-2 --image=kodekloud/webapp-delayed-start --dry-run=client -o yaml  --restart=Always --port=80 --expose`
+```bash
+kubectl run simple-webapp-2 --image=kodekloud/webapp-delayed-start --dry-run=client -o yaml  --restart=Always --port=80 --expose
+```

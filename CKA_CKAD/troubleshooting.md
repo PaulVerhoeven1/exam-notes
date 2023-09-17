@@ -5,9 +5,7 @@ Nodes:
 Log location
 
 - /var/log/kube-apiserver.log
-
 - /var/log/kube-scheduler.log
-
 - /var/log/kube-controller-manager.log
 
 On the node:
