@@ -2,13 +2,14 @@
 
 `kubectl config view`
 
+
 **Creating yaml file:**
 
 `kubectl create deployment —dry-run —image=nginx —output=yaml newdep > newdep.yaml`
 
 **Scaling deployment**
 
-```
+```bash
 kubectl get deployments
 kubectl scale deployment <deployment name> --replicas=3
 Kubectl edit deployment <deployment name>
@@ -16,7 +17,7 @@ Kubectl edit deployment <deployment name>
 
 **Labels**
 
-```
+```bash
 kubectl get all --selector app=nginx
 ```
 
@@ -67,9 +68,15 @@ kubectl describe secret secret1
 
 ### Commandlets
 
-**Switch between clusters**
+**Set a default namespace**
+```bash
+kubectl config set-context --current --namespace <namespace>
+```
 
-`kubectl config use-context <cluster_name>`
+**Switch between clusters**
+```bash
+kubectl config use-context <cluster_name>
+```
 
 **Get the yaml file of an running container**
 
