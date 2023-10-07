@@ -35,7 +35,6 @@ spec:
   - name: nginx
     image: nginx
     imagePullPolicy: IfNotPresent
-
 ```
 
 

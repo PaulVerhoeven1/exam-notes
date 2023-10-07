@@ -14,3 +14,9 @@ On the node:
 
 
 kubectl get pods -n kube-system
+
+## get logs off important pods 
+
+crictl ps -a
+
+crictl logs <podname>
