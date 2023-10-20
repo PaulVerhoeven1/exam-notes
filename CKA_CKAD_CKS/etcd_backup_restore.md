@@ -23,3 +23,5 @@ sudo etcdctl snapshot restore ../etcd_backup.db --cacert=etcd-ca.pem --cert=etcd
 
 systemctl start etcd
 systemctl reload kubelet
+```
+

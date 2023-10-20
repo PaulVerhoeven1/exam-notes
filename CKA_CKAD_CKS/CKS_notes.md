@@ -29,11 +29,30 @@ A constraint attaches a constraint template alongside any parameters
 
 ### **AppArmor**
 ```bash
+## show which modules are loaded
 aa-status
-apparmor_parser
 
+## load a module (enforce mode)
+apparmor_parser <path>
+
+## load a module (complain mode)
+apparmor_parser <path> -C
 ```
-``
+
+Setting annotation on the pod
+```yaml
+metadata:
+  annotations:
+    container.apparmor.security.beta.kubernetes.io/<container_name>: localhost/<profile_name>
+```
+
+
+```bash
+## verify if profile is correct loaded
+crictl ps
+crictl inspect <container_id> | grep apparmor
+```
+
 ### **Falco**
 Online course: https://learn.sysdig.com/falco-101
 Falco is has a threat detection engine it does this with detection and prevention
@@ -43,6 +62,13 @@ Falco intercepts the syscalls going to the kernel and parses does calls and chec
 - detecting threats, misbehaviours and outages in rumtime 
 - has 3 parts, events, rules and alerts
 
+```bash
+## Loading the rulesfile for falco
+sudo falco -r <rule_file>
+
+## show all possible conditions for falco
+falco --list
+```
 
 ### **Trivy**
 Does do vulnerability image scanning
@@ -51,7 +77,6 @@ trivy image <image_name>
 trivy image --severity HIGH,CRITICAL <image_name>
 ```
 
-
 ### **mTLS pod-to-pod encryption**
 - First need to do a CSR (CertificateSingingRequest)
 
@@ -59,10 +84,8 @@ trivy image --severity HIGH,CRITICAL <image_name>
 ## approving the certificate
 kubectl certificate approve <crs>
 
-
 ## view the certificate
 kubectl get csr <certificate>
-
 
 ## get the certificate
 kubectl get csr <certificate> -ojsonpath='{.status.certificate}' | base64 -d
