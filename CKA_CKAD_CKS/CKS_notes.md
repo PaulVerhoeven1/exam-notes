@@ -94,3 +94,18 @@ kubectl get csr <certificate> -ojsonpath='{.status.certificate}' | base64 -d
 ### sandbox
 - gVisor allows you to run containers in a sandbox, simulated kernel within the host OS
 - Kata containers are lightweight VM's to run Kubernetes containers in.
+
+### networkpolicies
+https://editor.networkpolicy.io/
+
+
+### Ingress
+
+```bash
+## creating the certificate
+
+openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout cert.key -out cert.crt -subj "/CN=world.universe.mine/O=world.universe.mine"
+
+## create a secret from the newly created certificate
+kubectl -n world create secret tls ingress-tls --key cert.key --cert cert.crt
+```

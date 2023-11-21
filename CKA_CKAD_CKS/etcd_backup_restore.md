@@ -9,7 +9,6 @@ get the endpoints and ca, key, cert paths
 etcdctl snapshot save <name>.db --cacert <location> --cert <location> --key <location>
 ```
 
-
 ### Restore a backup with etcdctl
 
 ```bash
