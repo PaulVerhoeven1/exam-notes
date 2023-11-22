@@ -109,3 +109,74 @@ openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout cert.key -out cert.c
 ## create a secret from the newly created certificate
 kubectl -n world create secret tls ingress-tls --key cert.key --cert cert.crt
 ```
+
+### ImagePolicyWebhook policy
+
+$ vi /etc/kubernetes/controlconf/admission_configuration.yaml
+```yaml
+apiVersion: apiserver.config.k8s.io/v1
+kind: AdmissionConfiguration
+plugins:
+- name: ImagePolicyWebhook
+  configuration:
+    imagePolicy:
+      kubeConfigFile: /etc/kubernetes/controlconf/kubeconfig.yaml
+      allowTTL: 50
+      denyTTL: 50
+      retryBackoff: 500
+      defaultAllow: false
+```
+
+$ vi cat /etc/kubernetes/controlconf/kubeconfig.yaml
+```yaml
+apiVersion: v1
+clusters:
+- cluster:
+    certificate-authority: /etc/kubernetesIcontrolconf/webhook.pem # CA for verifying the remote service.
+    server: https://wakanda.local:8080/image_policy
+  name: kubernetes
+contexts:
+- context:
+    cluster: kubernetes
+    user: kubernetes—admin
+  name: kubernetes-admin@kubernetes
+current-context: kubernetes-admin@kubernetes
+kind: Config
+preferences: {}
+users:
+- name: kubernetes-admin
+  user: _
+    client-certificate: /etc/kubernetes/controlconf/apiserver-client.pem
+    client-key: /etc/kubernetes/controlconf/apiserver-client—key.pem
+```
+
+
+## adding the following line to the kube-apiserver yaml:
+$ vi /etc/kubernetes/kube-apiserver.yaml
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+...
+  name: kube-apiserver
+  namespace: kube-system
+spec:
+  containers:
+  - command:
+    - kube-apiserver
+    - --admission-control-config-file=/etc/kubernetes/admission/admission_config.yaml
+    - --enable-admission-plugins=NodeRestriction,ImagePolicyWebhook
+...
+    volumeMounts:
+    - mountPath: /etc/kubernetes/admission
+      name: admission
+      readOnly: true
+...
+  volumes:
+  - hostPath:
+      path: /etc/kubernetes/admission
+      type: DirectoryOrCreate
+    name: admission
+...
+
+```
